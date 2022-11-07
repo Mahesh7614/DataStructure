@@ -28,6 +28,38 @@ namespace DataStructure
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
         }
+        internal Node InsertAtParticularPosition(int position, int data)
+        {
+            if (position < 1)
+            {
+                Console.WriteLine("Invalid Position");
+            }
+            if (position == 1)
+            {
+                Node newNode = new Node(data);
+                newNode.next = head;
+                head = newNode;
+            }
+            else
+            {
+                while (position != 0)
+                {
+                    if (position == 1)
+                    {
+                        var node = new Node(data);
+                        node.next = head.next;
+                        head.next = node;
+                        break;
+                    }
+                    head = head.next;
+                }
+                if (position != 1)
+                    Console.WriteLine("Position out of range");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Inserted value is : " + data);
+            return head;
+        }
         public void Display()
         {
             
