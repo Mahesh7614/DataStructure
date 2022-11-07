@@ -42,7 +42,7 @@ namespace DataStructure
             }
             else
             {
-                while (position != 0)
+                while (position-- != 0)
                 {
                     if (position == 1)
                     {
