@@ -26,16 +26,18 @@ namespace DataStructure
                 }
                 temp.next = node;
             }
-            Console.WriteLine($"{node.data} is Inserted in Linked List\n");
+            Console.WriteLine($"{node.data} is Inserted in Linked List");
         }
         public void Display()
         {
+            
             int i = 1;
-            Node temp = head;  
+            Node temp = head;
 
+            Console.WriteLine();
             if (temp == null)   
             {
-                Console.WriteLine("LinkedList is Empty");                                      
+                Console.WriteLine("LinkedList is Empty");
             }
             while (temp != null)
             {
