@@ -113,7 +113,7 @@ namespace DataStructure
                 return;
             }
             Node temp = head;
-            if (position == 0)
+            if (position == 1)
             {
                 head = temp.next;
                 return;
