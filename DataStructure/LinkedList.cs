@@ -28,6 +28,29 @@ namespace DataStructure
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
         }
+        public void Insert_front(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
+        public void Insert_Last(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = null;
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                Node temp = new Node(data);
+                temp = head;
+                while (temp.next != null)
+                    temp = temp.next;
+                temp.next = newNode;
+            }
+        }
         public Node InsertAtParticularPosition(int position, int data)
         {
             Node temp = head;
@@ -128,12 +151,6 @@ namespace DataStructure
             }
             Node next1 = temp.next.next;
             temp.next = next1;
-        }
-        public void Insert_front(int data)
-        {
-            Node newNode = new Node(data);
-            newNode.next = head;
-            head = newNode;
         }
         public void Display()
         {
