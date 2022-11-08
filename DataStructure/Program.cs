@@ -5,12 +5,17 @@
         static void Main(string[] args)
         {
             LinkedList list = new LinkedList();
+            //list.sortedInsert(list.Add(56));
+            //list.sortedInsert(list.Add(30));
+            //list.sortedInsert(list.Add(70));
+
             list.Add(56);
             list.Add(30);
             list.Add(70);
             list.Display();
+            //list.RemoveLastNode();
             list.Search(30);
-           
+
             Console.Write("\nEnter the Position Which you want to Insert Value : ");
             int position = Convert.ToInt32(Console.ReadLine()); // here we have to pass position = 3
             Console.Write("Enter the value Which you want to Insert : ");
@@ -18,10 +23,10 @@
             list.InsertAtParticularPosition(position, value);
             list.Display();
 
-            list.Search(40);
-            Console.Write("\nEnter the Position Which you want to Delete Value : ");
-            int node = Convert.ToInt32(Console.ReadLine());  // here we have to pass position = 3
-            list.DeleteNodeAtPerticularPosition(node);
+            //list.Search(40);
+            //Console.Write("\nEnter the Position Which you want to Delete Value : ");
+            //int node = Convert.ToInt32(Console.ReadLine());  // here we have to pass position = 3
+            //list.DeleteNodeAtPerticularPosition(node);
             list.Display();
         }
     }

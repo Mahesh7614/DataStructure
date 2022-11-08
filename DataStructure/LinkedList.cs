@@ -8,7 +8,7 @@ namespace DataStructure
 {
     public class LinkedList
     {
-        internal Node head;
+        public Node head;
         public void Add(int data)
         {
             Node node = new Node(data);
@@ -28,9 +28,10 @@ namespace DataStructure
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
         }
-        public Node InsertAtParticularPosition(int position, int data)
+        public void InsertAtParticularPosition(int position, int data)
         {
             Node temp = head;
+            int postion1=position;
             if (position < 1)
             {
                 Console.WriteLine("Invalid Position");
@@ -58,27 +59,25 @@ namespace DataStructure
                     Console.WriteLine("Position out of range");
             }
             Console.WriteLine();
-            Console.WriteLine("Inserted value is : " + data);
-            return temp;
+            Console.WriteLine($"Inserted value is : {data} at node {postion1}");
         }
-        public Node RemoveFirstNode()
+        public void RemoveFirstNode()
         {
             if (head == null)
             {
-                return null;
+                Console.WriteLine("The Linked List is Empty");
             }
             head = head.next;
-            return head;
         }
-        public Node RemoveLastNode()
+        public void RemoveLastNode()
         {
             if (head == null)
             {
-                return null;
+                Console.WriteLine("The Linked List is Empty");
             }
             if (head.next == null)
             {
-                return head = null;
+                Console.WriteLine("Only One Element in Linked List to Remove that Element Please Use Remove First Function");
             }
             Node newNode = head;
             while (newNode.next.next != null)
@@ -86,9 +85,8 @@ namespace DataStructure
                 newNode = newNode.next;
             }
             newNode.next = null;
-            return head;
         }
-        public Node Search(int value)
+        public void Search(int value)
         {
             int Count = 1;
             Node temp = head;
@@ -96,15 +94,11 @@ namespace DataStructure
             {
                 if (temp.data == value)
                 {
-
                     Console.WriteLine($"\nThe {value} is at Node : " + Count);
-
-                    return temp;
                 }
                 temp = temp.next;
                 Count++;
             }
-            return null;
         }
         public void DeleteNodeAtPerticularPosition(int position)
         {
@@ -128,6 +122,31 @@ namespace DataStructure
             }
             Node next1 = temp.next.next;
             temp.next = next1;
+        }
+        public void sortedInsert(Node new_node)
+        {
+            Node current;
+
+            if (head == null || head.data >= new_node.data)
+            {
+                new_node.next = head;
+                head = new_node;
+            }
+            else
+            {
+                current = head;
+
+                while (current.next != null && current.next.data < new_node.data)
+                    current = current.next;
+
+                new_node.next = current.next;
+                current.next = new_node;
+            }
+        }
+        public Node newNode(int data)
+        {
+            Node x = new Node(data);
+            return x;
         }
         public void Display()
         {
