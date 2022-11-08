@@ -27,9 +27,10 @@ namespace DataStructure
                 temp.next = node;
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
-        }
+        }       
         internal Node InsertAtParticularPosition(int position, int data)
         {
+            Node temp = head;
             if (position < 1)
             {
                 Console.WriteLine("Invalid Position");
@@ -37,8 +38,8 @@ namespace DataStructure
             if (position == 1)
             {
                 Node newNode = new Node(data);
-                newNode.next = head;
-                head = newNode;
+                newNode.next = temp;
+                temp = newNode;
             }
             else
             {
@@ -47,18 +48,18 @@ namespace DataStructure
                     if (position == 1)
                     {
                         var node = new Node(data);
-                        node.next = head.next;
-                        head.next = node;
+                        node.next = temp.next;
+                        temp.next = node;
                         break;
                     }
-                    head = head.next;
+                    temp = temp.next;
                 }
                 if (position != 1)
                     Console.WriteLine("Position out of range");
             }
             Console.WriteLine();
             Console.WriteLine("Inserted value is : " + data);
-            return head;
+            return temp;
         }
         internal Node RemoveFirstNode()
         {
@@ -90,35 +91,36 @@ namespace DataStructure
         internal Node Search(int value)
         {
             int Count = 1;
-            while (head != null)
+            Node temp = head;
+            while (temp != null)
             {
-                if (head.data == value)
+                if (temp.data == value)
                 {
                     
                     Console.WriteLine($"\nThe {value} is at Node : " + Count);
 
-                    return head;
+                    return temp;
                 }
-                head = head.next;
+                temp = temp.next;
                 Count++;
             }
             return null;
         }
         public void Display()
         {
-            
+
             int i = 1;
             Node temp = head;
 
             Console.WriteLine();
-            if (temp == null)   
+            if (temp == null)
             {
                 Console.WriteLine("LinkedList is Empty");
             }
             while (temp != null)
             {
                 Console.WriteLine($"Element {i} in Linked List is : " + temp.data);
-                temp = temp.next; 
+                temp = temp.next;
                 i++;
 
             }
