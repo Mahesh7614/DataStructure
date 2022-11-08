@@ -9,8 +9,9 @@ namespace DataStructure
     public class LinkedList
     {
         public Node head;
-        public void Add(int data)
+        public int Add(int data)
         {
+
             Node node = new Node(data);
 
             if (head == null)
@@ -27,6 +28,31 @@ namespace DataStructure
                 temp.next = node;
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
+            return data;
+        }
+        public void Insert_front(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
+
+        public void Insert_Last(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = null;
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                Node temp = new Node(data);
+                temp = head;
+                while (temp.next != null)
+                    temp = temp.next;
+                temp.next = newNode;
+            }
         }
         public void InsertAtParticularPosition(int position, int data)
         {
@@ -66,6 +92,7 @@ namespace DataStructure
             if (head == null)
             {
                 Console.WriteLine("The Linked List is Empty");
+                return;
             }
             head = head.next;
         }
@@ -74,10 +101,12 @@ namespace DataStructure
             if (head == null)
             {
                 Console.WriteLine("The Linked List is Empty");
+                return;
             }
             if (head.next == null)
             {
                 Console.WriteLine("Only One Element in Linked List to Remove that Element Please Use Remove First Function");
+                return;
             }
             Node newNode = head;
             while (newNode.next.next != null)
@@ -107,7 +136,7 @@ namespace DataStructure
                 return;
             }
             Node temp = head;
-            if (position == 0)
+            if (position == 1)
             {
                 head = temp.next;
                 return;
@@ -123,35 +152,39 @@ namespace DataStructure
             Node next1 = temp.next.next;
             temp.next = next1;
         }
-        public void sortedInsert(Node new_node)
-        {
-            Node current;
+        public void SortedLinkedList(int data)
+        { 
+            Node temp = head, index = null;
 
-            if (head == null || head.data >= new_node.data)
+            if (head == null)
             {
-                new_node.next = head;
-                head = new_node;
+                return;
             }
             else
             {
-                current = head;
+                while (temp != null)
+                {
+                    index = temp.next;
 
-                while (current.next != null && current.next.data < new_node.data)
-                    current = current.next;
-
-                new_node.next = current.next;
-                current.next = new_node;
+                    while (index != null)
+                    {
+                        if (temp.data > index.data)
+                        {
+                            data = temp.data;
+                            temp.data = index.data;
+                            index.data = data;
+                        }
+                        index = index.next;
+                    }
+                    temp = temp.next;
+                }
             }
-        }
-        public Node newNode(int data)
-        {
-            Node x = new Node(data);
-            return x;
         }
         public void Display()
         {
 
             int i = 1;
+            int Size =0;
             Node temp = head;
 
             Console.WriteLine();
@@ -163,9 +196,10 @@ namespace DataStructure
             {
                 Console.WriteLine($"Element {i} in Linked List is : " + temp.data);
                 temp = temp.next;
+                Size = i;
                 i++;
-
             }
+            Console.WriteLine("\nSize of Linked List is : " + Size);    
         }
     }
 }
