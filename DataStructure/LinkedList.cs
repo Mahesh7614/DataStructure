@@ -28,6 +28,12 @@ namespace DataStructure
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
         }
+        public void Insert_front(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
         public void Display()
         {
             

@@ -5,9 +5,9 @@
         static void Main(string[] args)
         {
             LinkedList list = new LinkedList();
-            list.Add(30);
-            list.Add(56);
             list.Add(70);
+            list.Insert_front(30);
+            list.Insert_front(56);
             list.Display();
 
         }
