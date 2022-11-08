@@ -129,6 +129,12 @@ namespace DataStructure
             Node next1 = temp.next.next;
             temp.next = next1;
         }
+        public void Insert_front(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
         public void Display()
         {
 
