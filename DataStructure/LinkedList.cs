@@ -27,8 +27,8 @@ namespace DataStructure
                 temp.next = node;
             }
             Console.WriteLine($"{node.data} is Inserted in Linked List");
-        }       
-        internal Node InsertAtParticularPosition(int position, int data)
+        }
+        public Node InsertAtParticularPosition(int position, int data)
         {
             Node temp = head;
             if (position < 1)
@@ -61,7 +61,7 @@ namespace DataStructure
             Console.WriteLine("Inserted value is : " + data);
             return temp;
         }
-        internal Node RemoveFirstNode()
+        public Node RemoveFirstNode()
         {
             if (head == null)
             {
@@ -70,25 +70,25 @@ namespace DataStructure
             head = head.next;
             return head;
         }
-        internal Node RemoveLastNode()
+        public Node RemoveLastNode()
         {
             if (head == null)
             {
                 return null;
             }
-            if(head.next == null)
+            if (head.next == null)
             {
-                return null;
+                return head = null;
             }
             Node newNode = head;
-            while(newNode.next.next != null)
+            while (newNode.next.next != null)
             {
                 newNode = newNode.next;
             }
             newNode.next = null;
             return head;
         }
-        internal Node Search(int value)
+        public Node Search(int value)
         {
             int Count = 1;
             Node temp = head;
@@ -96,7 +96,7 @@ namespace DataStructure
             {
                 if (temp.data == value)
                 {
-                    
+
                     Console.WriteLine($"\nThe {value} is at Node : " + Count);
 
                     return temp;
@@ -105,6 +105,29 @@ namespace DataStructure
                 Count++;
             }
             return null;
+        }
+        public void DeleteNodeAtPerticularPosition(int position)
+        {
+            if (head == null)
+            {
+                return;
+            }
+            Node temp = head;
+            if (position == 0)
+            {
+                head = temp.next;
+                return;
+            }
+            for (int i = 1; temp != null && i < position - 1; i++)
+            {
+                temp = temp.next;
+            }
+            if (temp == null || temp.next == null)
+            {
+                return;
+            }
+            Node next1 = temp.next.next;
+            temp.next = next1;
         }
         public void Display()
         {
